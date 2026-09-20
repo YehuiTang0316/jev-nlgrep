@@ -19,13 +19,15 @@ const { values } = parseArgs({ options: {
   threshold: { type: 'string', default: String(DEFAULTS.threshold) },
   report: { type: 'string' },
   supplemental: { type: 'boolean', default: false },
+  context: { type: 'boolean', default: false },
+  'max-attempts': { type: 'string', default: '200' },
 } });
 if (!['development', 'holdout', 'all'].includes(values.split!)) throw new Error('Invalid --split.');
 const threshold = Number(values.threshold);
 const limit = values.limit === undefined ? Infinity : Number(values.limit);
 if (!Number.isFinite(threshold) || threshold < 0 || threshold > 1 || !(limit > 0) || (limit !== Infinity && !Number.isSafeInteger(limit))) throw new Error('Invalid evaluation options.');
-const cases = (JSON.parse(await readFile(join(root, 'eval/cases.json'), 'utf8')) as EvalCase[])
-  .filter(c => !values.supplemental && (values.split === 'all' || c.split === values.split)).slice(0, limit);
+const cases = (JSON.parse(await readFile(join(root, values.context ? 'eval/context-cases.json' : 'eval/cases.json'), 'utf8')) as EvalCase[])
+  .filter(c => !values.supplemental && (values.context || values.split === 'all' || c.split === values.split)).slice(0, limit);
 const probes = values.supplemental ? await supplementalPlan(root) : [];
 if (cases.some(c => c.paths.some(p => !p.startsWith('eval/corpus/') || p.includes('..')))) throw new Error('Only the synthetic evaluation corpus may be sent.');
 const options = (c: EvalCase): SearchOptions => ({ ...DEFAULTS, query: c.query, paths: c.paths, cwd: root,
@@ -51,14 +53,14 @@ if (!values.live) {
   process.on('SIGINT', interrupt);
   try {
     await lock.writeFile(String(process.pid));
-    const budget = new TestBudget(join(root, '.nlgrep/eval-budget.json'));
+    const budget = new TestBudget(join(root, '.nlgrep/eval-budget.json'), Number(values['max-attempts']));
     let underlying: Evaluator | undefined;
     const evaluator = budget.wrap({ evaluate: async (request, signal) => {
       underlying ??= createJevEvaluator(await resolveApiKey(root));
       return underlying.evaluate(request, signal);
     } });
     const rows: CaseResult[] = [];
-    const report = resolve(root, values.report ?? `eval/results/${values.supplemental ? 'supplemental' : values.split}.json`);
+    const report = resolve(root, values.report ?? `eval/results/${values.supplemental ? 'supplemental' : values.context ? 'context' : values.split}.json`);
     await mkdir(dirname(report), { recursive: true });
     if (probes.length) {
       const result = await runSupplemental(probes, evaluator, controller.signal);
@@ -73,7 +75,7 @@ if (!values.live) {
         attempts: output.stats.attemptedRequests, cacheHits: output.stats.cacheHits,
         ...(output.errors.length ? { errors: output.errors } : {}) }));
       await writeFile(report, JSON.stringify({ generatedAt: new Date().toISOString(), model: DEFAULTS.model,
-        promptVersion: PROMPT_VERSION, threshold, windowLines: 40, windowBytes: 8192, batchWindows: 8,
+        promptVersion: PROMPT_VERSION, threshold, wholeFileBytes: 12288, windowLines: 40, windowBytes: 8192, batchWindows: 8,
         batchBytes: 24576, concurrency: 2, budget: budget.ledger,
         metrics: metrics(rows, threshold), groups: groupedMetrics(rows, threshold), rows }, null, 2) + '\n');
       if (!output.complete) { process.exitCode = controller.signal.aborted ? 130 : 2; break; }

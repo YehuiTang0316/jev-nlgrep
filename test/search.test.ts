@@ -11,9 +11,9 @@ test('all candidates are evaluated before top; threshold includes equality and t
   const f = await fixture({ a: 'unrelated wording', b: 'synonymous retry', c: 'below', d: 'strongest' });
   t.after(f.cleanup);
   let calls = 0;
-  const evaluator = { evaluate: async (r: Parameters<typeof evaluation>[0]) => { calls++; return evaluation(r, [{ a: 0.7, b: 0.7, c: 0.69999, d: 0.9 }[r.state.file.path]!]); } };
+  const evaluator = { evaluate: async (r: Parameters<typeof evaluation>[0]) => { calls++; return evaluation(r, r.state.windows.map(w => ({ a: 0.7, b: 0.7, c: 0.69999, d: 0.9 } as Record<string, number>)[w.path]!)); } };
   const a = await search(options(f.cwd, { top: 1, threshold: 0.7 }), { evaluator });
-  assert.equal(calls, 4); assert.equal(a.stats.matchedFiles, 3); assert.deepEqual(a.files.map(f => f.path), ['d']);
+  assert.equal(calls, 1); assert.equal(a.stats.matchedFiles, 3); assert.deepEqual(a.files.map(f => f.path), ['d']);
   assert.equal(a.outputLimited, true); assert.equal(exitCode(a), 0);
   const b = await search(options(f.cwd, { top: 0, threshold: 0.7 }), { evaluator });
   assert.deepEqual(b.files.map(f => f.path), ['d', 'a', 'b']);
@@ -24,7 +24,8 @@ test('failed response after partial matches remains incomplete and retries consu
   const f = await fixture({ a: 'a', b: 'b' }); t.after(f.cleanup);
   let calls = 0;
   const output = await search(options(f.cwd, { concurrency: 1, maxRequests: 3 }), {
-    evaluator: { evaluate: async r => { calls++; if (r.state.file.path === 'b') throw new EvaluationError('api_429', 'Rate limited.', true); return evaluation(r); } },
+    batchWindows: 1,
+    evaluator: { evaluate: async r => { calls++; if (r.state.windows[0]!.path === 'b') throw new EvaluationError('api_429', 'Rate limited.', true); return evaluation(r); } },
     sleep: async () => {},
   });
   assert.equal(calls, 3); assert.equal(exitCode(output), 2); assert.equal(output.complete, false);
@@ -37,14 +38,14 @@ test('preflight failures use zero API calls, including request and byte budgets'
   let calls = 0;
   const evaluator = { evaluate: async (r: Parameters<typeof evaluation>[0]) => { calls++; return evaluation(r); } };
   for (const override of [{ maxRequests: 1 }, { maxBytes: 1 }, { paths: ['a', 'missing'] }]) {
-    assert.equal(exitCode(await search(options(f.cwd, override), { evaluator })), 2);
+    assert.equal(exitCode(await search(options(f.cwd, override), { evaluator, batchWindows: 1 })), 2);
   }
   assert.equal(calls, 0);
 });
 
 test('no match, empty inputs and no files are complete without an API key when unnecessary', async t => {
   const f = await fixture({ empty: '', a: 'a' }); t.after(f.cleanup);
-  const absent = await search(options(f.cwd), { evaluator: { evaluate: async r => evaluation(r, [0.1]) } });
+  const absent = await search(options(f.cwd), { evaluator: { evaluate: async r => evaluation(r, r.state.windows.map(() => 0.1)) } });
   assert.equal(exitCode(absent), 1); assert.equal(absent.complete, true);
   assert.equal(exitCode(await search(options(f.cwd, { globs: ['*.no'] }), { env: {} })), 1);
   assert.equal(exitCode(await search(options(f.cwd, { paths: ['empty'] }), { env: {} })), 1);
@@ -96,7 +97,7 @@ test('concurrency is bounded and cancellation stops queued work', async t => {
   const f = await fixture(Object.fromEntries(Array.from({ length: 8 }, (_, i) => [`${i}.txt`, 'text']))); t.after(f.cleanup);
   let active = 0, max = 0, calls = 0;
   const controller = new AbortController();
-  const output = await search(options(f.cwd, { concurrency: 2 }), { signal: controller.signal, evaluator: {
+  const output = await search(options(f.cwd, { concurrency: 2 }), { signal: controller.signal, batchWindows: 1, evaluator: {
     evaluate: async (r, signal) => {
       calls++; active++; max = Math.max(max, active);
       await new Promise<void>(resolve => setTimeout(resolve, 10));
@@ -133,8 +134,8 @@ test('fixed excluded source text never reaches an evaluator or output even with 
 
 test('missing window scores after successful matches fail instead of becoming no-match', async t => {
   const f = await fixture({ a: 'match', b: 'missing answer' }); t.after(f.cleanup);
-  const output = await search(options(f.cwd, { concurrency: 1 }), { evaluator: {
-    evaluate: async r => evaluation(r, r.state.file.path === 'a' ? [0.9] : []),
+  const output = await search(options(f.cwd, { concurrency: 1 }), { batchWindows: 1, evaluator: {
+    evaluate: async r => evaluation(r, r.state.windows[0]!.path === 'a' ? [0.9] : []),
   } });
   assert.equal(exitCode(output), 2); assert.equal(output.complete, false);
   assert.equal(output.errors[0]?.code, 'protocol_error');

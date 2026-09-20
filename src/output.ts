@@ -13,12 +13,13 @@ export function renderResults(output: SearchOutput, options: Pick<SearchOptions,
     const lines = best.text.split('\n');
     if (lines.at(-1) === '') lines.pop();
     const body = lines.map((line, i) => `${best.startLine + i} | ${terminalSafe(line.replace(/\r$/, ''))}`).join('\n');
-    return `${header}\n${body}\n${file.matches.length > 1 ? `   + ${file.matches.length - 1} other matching windows\n` : ''}`;
+    const context = best.context.length ? `   Supplied context: ${best.context.map(w => `${pathSafe(w.path)}:${w.startLine}-${w.endLine}`).join(", ")}\n` : "";
+    return `${header}\n${body}\n${context}${file.matches.length > 1 ? `   + ${file.matches.length - 1} other matching windows\n` : ''}`;
   }).join('\n');
 }
 export function renderPlan(plan: PlanOutput, json: boolean): string {
   if (json) return JSON.stringify(plan, null, 2) + '\n';
-  const lines = plan.files.map(f => `${pathSafe(f.path)}  ${f.bytes} bytes  ${f.windows} windows`);
+  const lines = plan.files.map(f => `${pathSafe(f.path)}  ${f.bytes} bytes  ${f.windows} windows${f.contextFiles.length ? `  context: ${f.contextFiles.map(pathSafe).join(", ")}` : ""}`);
   for (const item of plan.exclusions) lines.push(`skip ${pathSafe(item.path)}  (${item.reason})`);
   lines.push(`${plan.files.length} files; ${plan.sourceBytes} source bytes; ${plan.plannedWindows} windows; ${plan.plannedRequests} batches`);
   lines.push(`${plan.cacheHits} cached; ${plan.uncachedRequests} API requests planned; ${plan.uncachedRequestBytes} uncached request bytes (not tokens)`);
@@ -33,6 +34,6 @@ export function summary(output: SearchOutput): string {
   const state = output.complete ? 'complete' : 'INCOMPLETE';
   return `${state}: ${s.evaluatedWindows}/${s.plannedWindows} windows, ${s.matchedFiles} matching files (${s.returnedFiles} shown), ` +
     `${s.attemptedRequests} API attempts, ${s.cacheHits} cached batches, ${s.inputTokens} input / ${s.outputTokens} output tokens${s.usageComplete ? '' : ' (received usage only)'}, ${s.elapsedMs} ms\n` +
-    `Evidence scope: window${output.outputLimited ? '; output limited by --top' : ''}.${exclusions ? ` Excluded entries: ${exclusions}.` : ''}\n` +
+    `Evidence scope: supplied file/window batch${output.outputLimited ? '; output limited by --top' : ''}.${exclusions ? ` Excluded entries: ${exclusions}.` : ''}\n` +
     (output.complete && !s.matchedFiles ? 'No evaluated content reached the matching threshold.\n' : '');
 }

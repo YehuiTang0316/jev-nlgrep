@@ -10,14 +10,15 @@ Search code, docs, logs, and text by meaning, even when you forget the exact wor
 | --- | --- |
 | [![Search by meaning](https://raw.githubusercontent.com/YehuiTang0316/jev-nlgrep/main/docs/videos/nlgrep-vs-grep.gif)](https://github.com/YehuiTang0316/jev-nlgrep/blob/main/docs/videos/nlgrep-vs-grep.mp4) | [![Describe code behavior](https://raw.githubusercontent.com/YehuiTang0316/jev-nlgrep/main/docs/videos/nlgrep-vs-semgrep.gif)](https://github.com/YehuiTang0316/jev-nlgrep/blob/main/docs/videos/nlgrep-vs-semgrep.mp4) |
 
-| Feature | grep | Semgrep CE | nlgrep |
+| Search scenario | grep | Semgrep CE | nlgrep |
 | --- | :---: | :---: | :---: |
 | Natural-language queries | ☐ | ☐ | ✅ |
 | Find paraphrases by meaning | ☐ | ☐ | ✅ |
+| Text, case, and format conditions | ✅ | ✅ | ✅ |
+| Code structure and local data-flow conditions | ☐ | ✅ | ✅ |
 | Describe code behavior without rules | ☐ | ☐ | ✅ |
-| Deterministic pattern matching | ✅ | ✅ | ☐ |
-| AST and data-flow rules | ☐ | ✅ | ☐ |
-| Search new content fully offline | ✅ | ✅ | ☐ |
+
+nlgrep uses Jev for every match: judgments depend on the supplied context and are probabilistic. [Evaluation and limits](https://github.com/YehuiTang0316/jev-nlgrep/blob/main/EVALUATION.md).
 
 [Demo notes and evidence](https://github.com/YehuiTang0316/jev-nlgrep/blob/main/comparison-videos/README.md#content-and-evidence)
 
@@ -128,7 +129,7 @@ src/retry.ts:42-44  p=0.93
 44 | }
 ```
 
-Line numbers identify the evaluated window, not individual line-level matches. `p` is the model's estimate that the condition is satisfied. Files are ranked by their highest-scoring window. JSON retains all matching windows, source text, byte ranges, snapshot hashes, and execution statistics. `--top` limits display only; every included window is evaluated.
+Line numbers identify the evaluated window, not individual line-level matches. `p` is the model's estimate that the condition is satisfied. Files are ranked by their highest-scoring window. Version 0.2 uses JSON schema 2 (`state.files` and per-window paths for custom evaluators). JSON retains all matching windows, source text, byte ranges, snapshot hashes, and execution statistics. Each match also includes the other windows supplied to Jev in `context`; these are evaluation inputs, not a model-generated proof. `evidenceScope` is `provided-context`. `--top` limits display only; every included window is evaluated.
 
 | Option | Default | Purpose |
 | --- | --- | --- |
@@ -150,13 +151,15 @@ stdout contains results only; statistics and errors go to stderr. Exit codes: `0
 
 ## Minimize API usage
 
-Judgments in `.nlgrep/cache-v1/` are reused by default. Cache keys include the complete evaluation input, query, model, and prompt version. Stored entries contain only hashes, probabilities, and model names—not source text, queries, paths, or keys. Changing the threshold, result count, or output format reuses the same judgments. File edits invalidate only affected batches. `--max-requests 0` guarantees no API calls and fails before sending anything if required cache entries are missing.
+Judgments in `.nlgrep/cache-v1/` are reused by default. Cache keys include the complete evaluation input, query, model, and prompt version. Stored entries contain only hashes, probabilities, and model names—not source text, queries, paths, or keys. Changing the threshold, result count, or output format reuses the same judgments. File edits invalidate every batch using the changed content, including judgments on other files sharing that context. `--max-requests 0` guarantees no API calls and fails before sending anything if required cache entries are missing.
 
-Adjacent windows from the same file are grouped into small batches: at most eight windows and 24 KiB per complete request. There is only one retry layer; SDK retries are disabled. Narrow the scope with paths, globs, ignore files, or a bounded `tail` first. `--dry-run` reports deduplicated source bytes and uncached request bytes; neither is presented as tokens or dollars.
+Files up to 12 KiB are evaluated whole when the serialized request fits. Larger files use overlapping 40-line / 8 KiB windows. Selected files are packed in path order into shared batches: at most eight windows and 24 KiB per complete request. Each window gets its own Jev judgment, using visibly connected evidence from other windows in that batch. This works for code, docs, logs, and text without a parser or a separate matching engine.
+
+Cross-file evidence is limited to the supplied batch; imports are not automatically followed, and dependencies in another batch are unavailable. Narrow paths to the relevant files and inspect `--dry-run --json` (`contextFiles`) to see what can be considered together. Complete files preserve long functions and records within the size limit; larger scopes can still be incomplete. There is only one retry layer; SDK retries are disabled. Narrow the scope with paths, globs, ignore files, or a bounded `tail` first. `--dry-run` reports deduplicated source bytes and uncached request bytes; neither is presented as tokens or dollars.
 
 As of 2026-09-20, the official price for pinned model `jev-1.13.0` is **$0.042 per million input tokens**, with free output. Actual charges follow server-side billing; failed requests may not return usage. See the [official models and pricing](https://docs.typesafe.ai/models).
 
-Live evaluations have a separate **cumulative $5 ceiling**. Before each attempt, the runner persistently reserves $0.01. The default limit is 200 attempts, reserving at most $2; failures and retries count toward the limit. A lock prevents parallel evaluations from bypassing the ledger at `.nlgrep/eval-budget.json`. Do not delete it to reset the budget. This guard applies to `npm run eval -- --live`; ordinary searches use `--max-requests` to cap attempts.
+Live evaluations have a separate **cumulative $5 ceiling**. Before each attempt, the runner persistently reserves $0.01. The default cumulative limit is 200 attempts, reserving at most $2; `--max-attempts` on the evaluation runner can raise it up to 500 while retaining the $5 hard ceiling; failures and retries count toward the limit. A lock prevents parallel evaluations from bypassing the ledger at `.nlgrep/eval-budget.json`. Do not delete it to reset the budget. This guard applies to `npm run eval -- --live`; ordinary searches use `--max-requests` to cap attempts.
 
 ## Files and data handling
 
@@ -171,8 +174,9 @@ See [Contributing](https://github.com/YehuiTang0316/jev-nlgrep/blob/main/CONTRIB
 ```sh
 npm run check                       # Type checking, offline tests, build; no Jev calls
 npm run eval                        # Local plan for synthetic evaluations; no Jev calls
-npm run eval -- --live --split development
-npm run eval -- --live --split holdout
+npm run eval -- --live --split development --max-attempts 250
+npm run eval -- --live --split holdout --max-attempts 250
+npm run eval -- --live --context --max-attempts 250  # Long functions and cross-file cases
 ```
 
 Live evaluations send only synthetic material from `eval/corpus/` and reuse cached judgments. The 40 queries are grouped by content type, English/Chinese language, and development/holdout split. Raw results are written to `eval/results/`. Reports include condition-violation rates: topical similarity alone does not count as satisfying the condition. Evaluation scripts do not execute sample code.

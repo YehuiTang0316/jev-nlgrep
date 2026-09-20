@@ -3,7 +3,7 @@ import { applyCache, ResultCache } from './cache.js';
 import { splitWindow } from './chunker.js';
 import { resolveApiKey } from './config.js';
 import { createJevEvaluator, EvaluationError, type Evaluator } from './jev.js';
-import { finishPlan, makeBatch } from './planner.js';
+import { finishPlan, makeCombinedBatch } from './planner.js';
 import { PROMPT_VERSION } from './prompt.js';
 import { changedSources, scan } from './scanner.js';
 import { issueFrom, SearchError, type Batch, type Evaluation, type FileResult, type Plan, type SearchOptions, type SearchOutput } from './types.js';
@@ -29,8 +29,8 @@ export async function prepare(options: SearchOptions, dependencies: SearchDepend
 export async function execute(plan: Plan, options: SearchOptions, cache: ResultCache, dependencies: SearchDependencies = {}): Promise<SearchOutput> {
   const start = performance.now();
   const stats = plan.stats;
-  const output: SearchOutput = { schemaVersion: 1, query: options.query, modelRequested: options.model,
-    modelsUsed: [], promptVersion: PROMPT_VERSION, threshold: options.threshold, evidenceScope: 'window',
+  const output: SearchOutput = { schemaVersion: 2, query: options.query, modelRequested: options.model,
+    modelsUsed: [], promptVersion: PROMPT_VERSION, threshold: options.threshold, evidenceScope: 'provided-context',
     complete: false, outputLimited: false, files: [], stats, errors: [...plan.errors], warnings: [] };
   const files = new Map<string, FileResult>();
   const models = new Set<string>();
@@ -38,19 +38,19 @@ export async function execute(plan: Plan, options: SearchOptions, cache: ResultC
   const signal = dependencies.signal ? AbortSignal.any([internal.signal, dependencies.signal]) : internal.signal;
   const sleep = dependencies.sleep ?? ((ms, s) => delay(ms, undefined, { signal: s }));
   const collect = (batch: Batch, result: Evaluation, cached: boolean) => {
-    if (result.probabilities.length !== batch.windows.length || result.probabilities.some(p => !Number.isFinite(p) || p < 0 || p > 1)) {
+    if (result.probabilities.length !== batch.items.length || result.probabilities.some(p => !Number.isFinite(p) || p < 0 || p > 1)) {
       throw new SearchError({ code: 'protocol_error', message: 'Jev returned invalid window probabilities.' });
     }
     models.add(result.model);
-    stats.evaluatedWindows += batch.windows.length;
-    if (cached) stats.cachedWindows += batch.windows.length;
+    stats.evaluatedWindows += batch.items.length;
+    if (cached) stats.cachedWindows += batch.items.length;
     else { stats.successfulRequests++; stats.inputTokens += result.usage.inputTokens; stats.outputTokens += result.usage.outputTokens; }
-    batch.windows.forEach((window, index) => {
+    batch.items.forEach(({ source, window }, index) => {
       const p = result.probabilities[index]!;
       if (p < options.threshold) return;
-      const entry = files.get(batch.source.path) ?? { path: batch.source.path, sourceHash: batch.source.hash, rank: 0, matches: [] };
+      const entry = files.get(source.path) ?? { path: source.path, sourceHash: source.hash, rank: 0, matches: [] };
       entry.rank = Math.max(entry.rank, p);
-      entry.matches.push({ ...window, matchProbability: p });
+      entry.matches.push({ ...window, matchProbability: p, context: batch.request.state.windows.filter((_, i) => i !== index) });
       files.set(entry.path, entry);
     });
     dependencies.onProgress?.(stats.evaluatedWindows, stats.plannedWindows, stats.attemptedRequests, stats.cacheHits);
@@ -81,11 +81,11 @@ export async function execute(plan: Plan, options: SearchOptions, cache: ResultC
             stats.usageComplete = false;
             if (signal.aborted) throw error;
             if (error instanceof EvaluationError && error.contextTooLong && !split) {
-              const groups = batch.windows.length > 1 ? [batch.windows.slice(0, Math.ceil(batch.windows.length / 2)), batch.windows.slice(Math.ceil(batch.windows.length / 2))]
-                : splitWindow(batch.source, batch.windows[0]!).map(w => [w]);
+              const groups = batch.items.length > 1 ? [batch.items.slice(0, Math.ceil(batch.items.length / 2)), batch.items.slice(Math.ceil(batch.items.length / 2))]
+                : splitWindow(batch.items[0]!.source, batch.items[0]!.window).map(window => [{ source: batch.items[0]!.source, window }]);
               if (!groups.length) throw error;
-              stats.plannedWindows += groups.reduce((n, g) => n + g.length, 0) - batch.windows.length;
-              for (const group of groups) await evaluateBatch(makeBatch(batch.source, group, options), true);
+              stats.plannedWindows += groups.reduce((n, g) => n + g.length, 0) - batch.items.length;
+              for (const group of groups) await evaluateBatch(makeCombinedBatch(group, options), true);
               return;
             }
             if (!(error instanceof EvaluationError) || !error.retryable || retry === 2) throw error;

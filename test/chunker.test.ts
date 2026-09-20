@@ -38,6 +38,6 @@ test('normal windows overlap but advance and request packing respects full seria
   assert.ok(batches.length > 1, 'escaped JSON must be measured, not original text bytes');
   assert.ok(batches.every(b => b.requestBytes <= BATCH_LIMITS.bytes));
   const bytes = new Uint8Array(weird.bytes.length);
-  for (const b of batches) for (const w of b.windows) bytes.fill(1, w.startByte, w.endByte);
+  for (const b of batches) for (const { window: w } of b.items) bytes.fill(1, w.startByte, w.endByte);
   assert.ok(bytes.every(Boolean));
 });

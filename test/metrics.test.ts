@@ -25,9 +25,9 @@ test('evaluation corpus is balanced, disjoint, and has valid evidence labels', a
 test('metrics count empty positive results, false alarms and condition violations', () => {
   const make = (expected: string[], found: string[]): CaseResult => ({
     case: { id: 'sample', category: 'text', language: 'en', split: 'development', scenario: 'Q02', query: 'condition', paths: ['a', 'b'], expected, expectedLines: { a: [1, 1] } },
-    output: { schemaVersion: 1, query: 'condition', modelRequested: 'test', modelsUsed: [], promptVersion: 'test', threshold: 0,
-      evidenceScope: 'window', complete: true, outputLimited: false, stats: emptyStats(), errors: [], warnings: [],
-      files: found.map(path => ({ path, rank: 0.9, sourceHash: '', matches: [{ startLine: 1, endLine: 1, startByte: 0, endByte: 1, fragment: false, text: 'x', matchProbability: 0.9 }] })) } satisfies SearchOutput,
+    output: { schemaVersion: 2, query: 'condition', modelRequested: 'test', modelsUsed: [], promptVersion: 'test', threshold: 0,
+      evidenceScope: 'provided-context', complete: true, outputLimited: false, stats: emptyStats(), errors: [], warnings: [],
+      files: found.map(path => ({ path, rank: 0.9, sourceHash: '', matches: [{ startLine: 1, endLine: 1, startByte: 0, endByte: 1, fragment: false, text: 'x', matchProbability: 0.9, context: [] }] })) } satisfies SearchOutput,
   });
   const result = metrics([make(['a'], ['a', 'b']), make(['a'], []), make([], ['b'])], 0.7);
   assert.equal(result.recallAt10, 0.5); assert.equal(result.precisionAt10, 0.25);

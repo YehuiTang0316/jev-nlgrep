@@ -42,7 +42,7 @@ export class ResultCache {
       if (!stat.isFile() || stat.size > 64 * 1024) return;
       const entry = JSON.parse(await readFile(path, 'utf8')) as Record<string, unknown>;
       if (entry.version !== 1 || entry.key !== key || entry.model !== batch.request.model || !Array.isArray(entry.probabilities) ||
-          entry.probabilities.length !== batch.windows.length || !entry.probabilities.every(p => typeof p === 'number' && Number.isFinite(p) && p >= 0 && p <= 1)) return;
+          entry.probabilities.length !== batch.items.length || !entry.probabilities.every(p => typeof p === 'number' && Number.isFinite(p) && p >= 0 && p <= 1)) return;
       return { model: entry.model, probabilities: entry.probabilities as number[], usage: { inputTokens: 0, outputTokens: 0 } };
     } catch { return; } // A corrupt/unreadable cache is a miss, never a fabricated no-match.
   }

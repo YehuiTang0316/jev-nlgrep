@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { makeSource, sliceWindow } from '../src/chunker.js';
+import { chunkSource, makeSource, sliceWindow } from '../src/chunker.js';
 import { DEFAULTS } from '../src/config.js';
 import type { Evaluator } from '../src/jev.js';
 import { makeBatch, packSource } from '../src/planner.js';
@@ -11,8 +11,8 @@ export async function supplementalPlan(root: string): Promise<Probe[]> {
   const load = async (name: string) => makeSource(`eval/corpus/supplemental/${name}`, await readFile(join(root, 'eval/corpus/supplemental', name)));
   const sample = await load('batch.log');
   const opts = { query: 'A log record stating that an order request timed out and a retry was scheduled, excluding health checks', model: DEFAULTS.model };
-  const batched = packSource(sample, opts);
-  // Internal experiment only: non-overlapping 20-line windows. Production limits remain fixed.
+  const batched = [makeBatch(sample, chunkSource(sample), opts)];
+  // Compare fallback windows explicitly; production now prefers complete small files.
   const windows = [];
   let start = 0, lines = 0;
   for (let i = 0; i < sample.bytes.length; i++) if (sample.bytes[i] === 10 && ++lines % 20 === 0) {
@@ -21,7 +21,7 @@ export async function supplementalPlan(root: string): Promise<Probe[]> {
   if (start < sample.bytes.length) windows.push(sliceWindow(sample, start, sample.bytes.length));
   const probes: Probe[] = [
     { name: '40-lines-batched', purpose: '40 lines / overlap 8 / up to 8 windows per request', expectedMatch: true, batches: batched },
-    { name: '40-lines-single', purpose: 'Same production windows, one question per request', expectedMatch: true, batches: packSource(sample, opts, 1) },
+    { name: '40-lines-single', purpose: 'Same fallback windows, one question per request', expectedMatch: true, batches: chunkSource(sample).map(w => makeBatch(sample, [w], opts)) },
     { name: '20-lines-batched', purpose: '20 lines / no overlap / one request; exploratory, not a controlled overlap comparison', expectedMatch: true, batches: [makeBatch(sample, windows, opts)] },
   ];
   const query = 'A handler function that reads a user profile without checking whether the caller is logged in';
@@ -41,7 +41,7 @@ export async function runSupplemental(probes: Probe[], evaluator: Evaluator, sig
     const responses: Array<{ windows: Array<{ startLine: number; endLine: number }>; requestBytes: number; result: Evaluation }> = [];
     for (const batch of probe.batches) {
       const result = await evaluator.evaluate(batch.request, signal);
-      responses.push({ windows: batch.windows.map(w => ({ startLine: w.startLine, endLine: w.endLine })), requestBytes: batch.requestBytes, result });
+      responses.push({ windows: batch.items.map(({ window: w }) => ({ startLine: w.startLine, endLine: w.endLine })), requestBytes: batch.requestBytes, result });
     }
     const rank = Math.max(...responses.flatMap(r => r.result.probabilities));
     rows.push({ name: probe.name, purpose: probe.purpose, expectedMatch: probe.expectedMatch,
