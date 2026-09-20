@@ -1,0 +1,836 @@
+[
+  {
+    "id": "code-01",
+    "category": "code",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q01",
+    "query": "包含字面字符串 ECONNRESET，区分大小写",
+    "paths": [
+      "eval/corpus/code-01/a.ts",
+      "eval/corpus/code-01/b.ts",
+      "eval/corpus/code-01/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-01/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-01/a.ts": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "code-02",
+    "category": "code",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q04",
+    "query": "Code that calls fetch with method POST, excluding comments and documentation",
+    "paths": [
+      "eval/corpus/code-02/a.ts",
+      "eval/corpus/code-02/b.ts",
+      "eval/corpus/code-02/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-02/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-02/a.ts": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "code-03",
+    "category": "code",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q05",
+    "query": "在循环里面逐个 await 网络请求的代码",
+    "paths": [
+      "eval/corpus/code-03/a.ts",
+      "eval/corpus/code-03/b.ts",
+      "eval/corpus/code-03/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-03/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-03/a.ts": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "id": "code-04",
+    "category": "code",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q08",
+    "query": "Code that passes an HTTP request parameter to a shell command",
+    "paths": [
+      "eval/corpus/code-04/a.ts",
+      "eval/corpus/code-04/b.ts",
+      "eval/corpus/code-04/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-04/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-04/a.ts": [
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "id": "code-05",
+    "category": "code",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q06",
+    "query": "把变量直接拼接进 SQL 查询然后执行的代码",
+    "paths": [
+      "eval/corpus/code-05/a.ts",
+      "eval/corpus/code-05/b.ts",
+      "eval/corpus/code-05/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-05/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-05/a.ts": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "id": "code-06",
+    "category": "code",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q05",
+    "query": "A call to JSON.parse outside a try/catch block",
+    "paths": [
+      "eval/corpus/code-06/a.ts",
+      "eval/corpus/code-06/b.ts",
+      "eval/corpus/code-06/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-06/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-06/a.ts": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "code-07",
+    "category": "code",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q03",
+    "query": "网络请求失败后采用指数退避重试的代码",
+    "paths": [
+      "eval/corpus/code-07/a.ts",
+      "eval/corpus/code-07/b.ts",
+      "eval/corpus/code-07/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-07/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-07/a.ts": [
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "id": "code-08",
+    "category": "code",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q04",
+    "query": "A database password hardcoded as a string literal",
+    "paths": [
+      "eval/corpus/code-08/a.ts",
+      "eval/corpus/code-08/b.ts",
+      "eval/corpus/code-08/c.ts"
+    ],
+    "expected": [
+      "eval/corpus/code-08/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/code-08/a.ts": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "code-09",
+    "category": "code",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q04",
+    "query": "实际读取 Windows 注册表的代码，不包括注释",
+    "paths": [
+      "eval/corpus/code-09/a.ts",
+      "eval/corpus/code-09/b.ts",
+      "eval/corpus/code-09/c.ts"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  },
+  {
+    "id": "code-10",
+    "category": "code",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q04",
+    "query": "Actual code that streams a webcam using WebRTC, excluding comments",
+    "paths": [
+      "eval/corpus/code-10/a.ts",
+      "eval/corpus/code-10/b.ts",
+      "eval/corpus/code-10/c.ts"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  },
+  {
+    "id": "docs-01",
+    "category": "docs",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "说明如何通过环境变量配置生产数据库连接的文档",
+    "paths": [
+      "eval/corpus/docs-01/a.md",
+      "eval/corpus/docs-01/b.md",
+      "eval/corpus/docs-01/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-01/a.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-01/a.md": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "id": "docs-02",
+    "category": "docs",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q03",
+    "query": "Instructions for rotating an API key without downtime",
+    "paths": [
+      "eval/corpus/docs-02/a.md",
+      "eval/corpus/docs-02/b.md",
+      "eval/corpus/docs-02/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-02/a.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-02/a.md": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "id": "docs-03",
+    "category": "docs",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q02",
+    "query": "明确说日志保留三十天后删除的文档",
+    "paths": [
+      "eval/corpus/docs-03/a.md",
+      "eval/corpus/docs-03/b.md",
+      "eval/corpus/docs-03/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-03/a.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-03/a.md": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "docs-04",
+    "category": "docs",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q02",
+    "query": "Documentation that allows a refund only before an order ships",
+    "paths": [
+      "eval/corpus/docs-04/a.md",
+      "eval/corpus/docs-04/b.md",
+      "eval/corpus/docs-04/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-04/a.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-04/a.md": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "docs-05",
+    "category": "docs",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q02",
+    "query": "同时说明支持单点登录和多因素认证的文档",
+    "paths": [
+      "eval/corpus/docs-05/a.md",
+      "eval/corpus/docs-05/b.md",
+      "eval/corpus/docs-05/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-05/a.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-05/a.md": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "id": "docs-06",
+    "category": "docs",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q03",
+    "query": "Instructions for recovering a deleted database from backups",
+    "paths": [
+      "eval/corpus/docs-06/a.md",
+      "eval/corpus/docs-06/b.md",
+      "eval/corpus/docs-06/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-06/a.md",
+      "eval/corpus/docs-06/c.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-06/a.md": [
+        1,
+        2
+      ],
+      "eval/corpus/docs-06/c.md": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "id": "docs-07",
+    "category": "docs",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q09",
+    "query": "整行是以 ORD- 开头后面恰好六个数字的订单号",
+    "paths": [
+      "eval/corpus/docs-07/a.md",
+      "eval/corpus/docs-07/b.md",
+      "eval/corpus/docs-07/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-07/a.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-07/a.md": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "docs-08",
+    "category": "docs",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q02",
+    "query": "Documentation saying the client retries rate-limited requests and obeys Retry-After",
+    "paths": [
+      "eval/corpus/docs-08/a.md",
+      "eval/corpus/docs-08/b.md",
+      "eval/corpus/docs-08/c.md"
+    ],
+    "expected": [
+      "eval/corpus/docs-08/a.md"
+    ],
+    "expectedLines": {
+      "eval/corpus/docs-08/a.md": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "docs-09",
+    "category": "docs",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "说明如何配置卫星地面站天线的文档",
+    "paths": [
+      "eval/corpus/docs-09/a.md",
+      "eval/corpus/docs-09/b.md",
+      "eval/corpus/docs-09/c.md"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  },
+  {
+    "id": "docs-10",
+    "category": "docs",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q03",
+    "query": "Documentation that explains how to enroll a fingerprint on a biometric lock",
+    "paths": [
+      "eval/corpus/docs-10/a.md",
+      "eval/corpus/docs-10/b.md",
+      "eval/corpus/docs-10/c.md"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  },
+  {
+    "id": "logs-01",
+    "category": "logs",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q02",
+    "query": "同一条日志同时包含订单超时和重试，并且不是健康检查",
+    "paths": [
+      "eval/corpus/logs-01/a.log",
+      "eval/corpus/logs-01/b.log",
+      "eval/corpus/logs-01/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-01/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-01/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-02",
+    "category": "logs",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q02",
+    "query": "An ERROR log about a failed payment, excluding health checks",
+    "paths": [
+      "eval/corpus/logs-02/a.log",
+      "eval/corpus/logs-02/b.log",
+      "eval/corpus/logs-02/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-02/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-02/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-03",
+    "category": "logs",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q01",
+    "query": "包含字面字符串 ECONNRESET，区分大小写",
+    "paths": [
+      "eval/corpus/logs-03/a.log",
+      "eval/corpus/logs-03/b.log",
+      "eval/corpus/logs-03/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-03/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-03/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-04",
+    "category": "logs",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "A request that succeeded after a retry, not one still scheduled to retry",
+    "paths": [
+      "eval/corpus/logs-04/a.log",
+      "eval/corpus/logs-04/b.log",
+      "eval/corpus/logs-04/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-04/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-04/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-05",
+    "category": "logs",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q02",
+    "query": "同一条记录包含订单超时和重试，排除健康检查",
+    "paths": [
+      "eval/corpus/logs-05/a.log",
+      "eval/corpus/logs-05/b.log",
+      "eval/corpus/logs-05/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-05/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-05/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-06",
+    "category": "logs",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q09",
+    "query": "A log line that starts with ERROR and ends with a three-digit HTTP status code",
+    "paths": [
+      "eval/corpus/logs-06/a.log",
+      "eval/corpus/logs-06/b.log",
+      "eval/corpus/logs-06/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-06/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-06/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-07",
+    "category": "logs",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q03",
+    "query": "由于磁盘空间不足导致写入失败的日志",
+    "paths": [
+      "eval/corpus/logs-07/a.log",
+      "eval/corpus/logs-07/b.log",
+      "eval/corpus/logs-07/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-07/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-07/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-08",
+    "category": "logs",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q02",
+    "query": "A failed database login due to invalid credentials rather than a network timeout",
+    "paths": [
+      "eval/corpus/logs-08/a.log",
+      "eval/corpus/logs-08/b.log",
+      "eval/corpus/logs-08/c.log"
+    ],
+    "expected": [
+      "eval/corpus/logs-08/a.log"
+    ],
+    "expectedLines": {
+      "eval/corpus/logs-08/a.log": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "logs-09",
+    "category": "logs",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "记录了航天器发动机点火失败的日志",
+    "paths": [
+      "eval/corpus/logs-09/a.log",
+      "eval/corpus/logs-09/b.log",
+      "eval/corpus/logs-09/c.log"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  },
+  {
+    "id": "logs-10",
+    "category": "logs",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q03",
+    "query": "A log reporting that a GPU overheated and shut down",
+    "paths": [
+      "eval/corpus/logs-10/a.log",
+      "eval/corpus/logs-10/b.log",
+      "eval/corpus/logs-10/c.log"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  },
+  {
+    "id": "text-01",
+    "category": "text",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "允许用户在发货之前取消订单的规定",
+    "paths": [
+      "eval/corpus/text-01/a.txt",
+      "eval/corpus/text-01/b.txt",
+      "eval/corpus/text-01/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-01/a.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-01/a.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-02",
+    "category": "text",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q09",
+    "query": "An entire line containing only a six-digit verification code",
+    "paths": [
+      "eval/corpus/text-02/a.txt",
+      "eval/corpus/text-02/b.txt",
+      "eval/corpus/text-02/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-02/a.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-02/a.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-03",
+    "category": "text",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q02",
+    "query": "包含退款条件但明确排除数字商品的说明",
+    "paths": [
+      "eval/corpus/text-03/a.txt",
+      "eval/corpus/text-03/b.txt",
+      "eval/corpus/text-03/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-03/a.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-03/a.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-04",
+    "category": "text",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "An explicit request to postpone a meeting until next week",
+    "paths": [
+      "eval/corpus/text-04/a.txt",
+      "eval/corpus/text-04/b.txt",
+      "eval/corpus/text-04/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-04/a.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-04/a.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-05",
+    "category": "text",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q02",
+    "query": "同一行同时包含 Alice 和 Bob，名字区分大小写",
+    "paths": [
+      "eval/corpus/text-05/a.txt",
+      "eval/corpus/text-05/b.txt",
+      "eval/corpus/text-05/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-05/a.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-05/a.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-06",
+    "category": "text",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q02",
+    "query": "A document stating that both administrators and editors can publish articles",
+    "paths": [
+      "eval/corpus/text-06/a.txt",
+      "eval/corpus/text-06/b.txt",
+      "eval/corpus/text-06/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-06/a.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-06/a.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-07",
+    "category": "text",
+    "language": "zh",
+    "split": "holdout",
+    "scenario": "Q09",
+    "query": "以 support@ 开头并以 .com 结尾的邮箱地址",
+    "paths": [
+      "eval/corpus/text-07/a.txt",
+      "eval/corpus/text-07/b.txt",
+      "eval/corpus/text-07/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-07/a.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-07/a.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-08",
+    "category": "text",
+    "language": "en",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "A sentence saying a subscription renews automatically unless cancelled",
+    "paths": [
+      "eval/corpus/text-08/a.txt",
+      "eval/corpus/text-08/b.txt",
+      "eval/corpus/text-08/c.txt"
+    ],
+    "expected": [
+      "eval/corpus/text-08/a.txt",
+      "eval/corpus/text-08/c.txt"
+    ],
+    "expectedLines": {
+      "eval/corpus/text-08/a.txt": [
+        1,
+        1
+      ],
+      "eval/corpus/text-08/c.txt": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "id": "text-09",
+    "category": "text",
+    "language": "zh",
+    "split": "development",
+    "scenario": "Q03",
+    "query": "描述鲸鱼迁徙路线的文字",
+    "paths": [
+      "eval/corpus/text-09/a.txt",
+      "eval/corpus/text-09/b.txt",
+      "eval/corpus/text-09/c.txt"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  },
+  {
+    "id": "text-10",
+    "category": "text",
+    "language": "en",
+    "split": "holdout",
+    "scenario": "Q03",
+    "query": "Instructions for tuning the strings of a violin",
+    "paths": [
+      "eval/corpus/text-10/a.txt",
+      "eval/corpus/text-10/b.txt",
+      "eval/corpus/text-10/c.txt"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  }
+]

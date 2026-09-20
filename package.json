@@ -1,0 +1,64 @@
+{
+  "name": "nlgrep",
+  "version": "0.1.0",
+  "description": "Search files with natural-language conditions, powered by Jev.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "nlgrep": "bin/nlgrep.js"
+  },
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin",
+    "dist",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.check.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "check": "npm run typecheck && npm test && npm run build",
+    "dev": "tsx src/dev.ts",
+    "eval": "tsx scripts/evaluate.ts",
+    "prepack": "npm run build",
+    "smoke:package": "node scripts/package-smoke.mjs",
+    "release:check": "tsx scripts/release.ts"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "0.6.0",
+    "commander": "14.0.3",
+    "dotenv": "18.0.1",
+    "ignore": "7.0.9",
+    "picomatch": "4.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.4",
+    "@types/picomatch": "4.0.3",
+    "tsx": "4.23.13",
+    "typescript": "5.9.3"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YehuiTang0316/jev-nlgrep.git"
+  },
+  "homepage": "https://github.com/YehuiTang0316/jev-nlgrep#readme",
+  "bugs": {
+    "url": "https://github.com/YehuiTang0316/jev-nlgrep/issues"
+  },
+  "keywords": [
+    "grep",
+    "natural-language",
+    "semantic-search",
+    "cli",
+    "jev",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

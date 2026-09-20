@@ -1,0 +1,1 @@
+Only administrators can publish articles. Editors cannot publish.

@@ -1,0 +1,1 @@
+Restart the application after installing updates.

@@ -1,0 +1,1 @@
+Customers may change their shipping address but cannot cancel an order.

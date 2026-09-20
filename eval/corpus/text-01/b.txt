@@ -1,0 +1,1 @@
+Customers cannot cancel an order once payment is received.

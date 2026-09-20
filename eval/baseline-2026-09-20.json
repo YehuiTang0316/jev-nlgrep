@@ -1,0 +1,2917 @@
+{
+  "date": "2026-09-20",
+  "model": "jev-1.13.0",
+  "promptVersion": "conditions-v1",
+  "threshold": 0.8,
+  "windowLines": 40,
+  "windowBytes": 8192,
+  "batchWindows": 8,
+  "batchBytes": 24576,
+  "concurrency": 2,
+  "budget": {
+    "version": 1,
+    "attempts": 132,
+    "successful": 132,
+    "reservedUSD": 1.32,
+    "observedUSD": 0.003244962000000003,
+    "inputTokens": 77261,
+    "outputTokens": 2942,
+    "model": "jev-1.13.0"
+  },
+  "development": {
+    "metrics": {
+      "queries": 20,
+      "completeQueries": 20,
+      "positiveQueries": 16,
+      "negativeQueries": 4,
+      "recallAt10": 1,
+      "precisionAt10": 1,
+      "noMatchFalsePositiveRate": 0,
+      "conditionViolations": 0,
+      "conditionHits": 11,
+      "conditionViolationRate": 0,
+      "evidenceOverlapPrecision": 1,
+      "windows": 17,
+      "supportedWindows": 17
+    },
+    "groups": {
+      "split": {
+        "development": {
+          "queries": 20,
+          "completeQueries": 20,
+          "positiveQueries": 16,
+          "negativeQueries": 4,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 11,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 17,
+          "supportedWindows": 17
+        }
+      },
+      "category": {
+        "code": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 4,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        },
+        "docs": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 3,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        },
+        "logs": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 3,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        },
+        "text": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 1,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 5,
+          "supportedWindows": 5
+        }
+      },
+      "language": {
+        "en": {
+          "queries": 8,
+          "completeQueries": 8,
+          "positiveQueries": 8,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 5,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 9,
+          "supportedWindows": 9
+        },
+        "zh": {
+          "queries": 12,
+          "completeQueries": 12,
+          "positiveQueries": 8,
+          "negativeQueries": 4,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 6,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 8,
+          "supportedWindows": 8
+        }
+      },
+      "scenario": {
+        "Q01": {
+          "queries": 1,
+          "completeQueries": 1,
+          "positiveQueries": 1,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 1,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 1,
+          "supportedWindows": 1
+        },
+        "Q02": {
+          "queries": 7,
+          "completeQueries": 7,
+          "positiveQueries": 7,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 7,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 7,
+          "supportedWindows": 7
+        },
+        "Q03": {
+          "queries": 8,
+          "completeQueries": 8,
+          "positiveQueries": 5,
+          "negativeQueries": 3,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 0,
+          "conditionViolationRate": null,
+          "evidenceOverlapPrecision": 1,
+          "windows": 6,
+          "supportedWindows": 6
+        },
+        "Q04": {
+          "queries": 2,
+          "completeQueries": 2,
+          "positiveQueries": 1,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 1,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 1,
+          "supportedWindows": 1
+        },
+        "Q06": {
+          "queries": 1,
+          "completeQueries": 1,
+          "positiveQueries": 1,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 1,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 1,
+          "supportedWindows": 1
+        },
+        "Q08": {
+          "queries": 1,
+          "completeQueries": 1,
+          "positiveQueries": 1,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 1,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 1,
+          "supportedWindows": 1
+        }
+      }
+    }
+  },
+  "holdout": {
+    "metrics": {
+      "queries": 20,
+      "completeQueries": 20,
+      "positiveQueries": 16,
+      "negativeQueries": 4,
+      "recallAt10": 1,
+      "precisionAt10": 1,
+      "noMatchFalsePositiveRate": 0,
+      "conditionViolations": 0,
+      "conditionHits": 12,
+      "conditionViolationRate": 0,
+      "evidenceOverlapPrecision": 1,
+      "windows": 17,
+      "supportedWindows": 17
+    },
+    "groups": {
+      "split": {
+        "holdout": {
+          "queries": 20,
+          "completeQueries": 20,
+          "positiveQueries": 16,
+          "negativeQueries": 4,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 12,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 17,
+          "supportedWindows": 17
+        }
+      },
+      "category": {
+        "code": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 3,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        },
+        "docs": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 2,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 5,
+          "supportedWindows": 5
+        },
+        "logs": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 3,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        },
+        "text": {
+          "queries": 5,
+          "completeQueries": 5,
+          "positiveQueries": 4,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 4,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        }
+      },
+      "language": {
+        "en": {
+          "queries": 12,
+          "completeQueries": 12,
+          "positiveQueries": 8,
+          "negativeQueries": 4,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 6,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 9,
+          "supportedWindows": 9
+        },
+        "zh": {
+          "queries": 8,
+          "completeQueries": 8,
+          "positiveQueries": 8,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 6,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 8,
+          "supportedWindows": 8
+        }
+      },
+      "scenario": {
+        "Q01": {
+          "queries": 1,
+          "completeQueries": 1,
+          "positiveQueries": 1,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 1,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 1,
+          "supportedWindows": 1
+        },
+        "Q02": {
+          "queries": 4,
+          "completeQueries": 4,
+          "positiveQueries": 4,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 4,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        },
+        "Q03": {
+          "queries": 7,
+          "completeQueries": 7,
+          "positiveQueries": 4,
+          "negativeQueries": 3,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 0,
+          "conditionViolationRate": null,
+          "evidenceOverlapPrecision": 1,
+          "windows": 5,
+          "supportedWindows": 5
+        },
+        "Q04": {
+          "queries": 2,
+          "completeQueries": 2,
+          "positiveQueries": 1,
+          "negativeQueries": 1,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": 0,
+          "conditionViolations": 0,
+          "conditionHits": 1,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 1,
+          "supportedWindows": 1
+        },
+        "Q05": {
+          "queries": 2,
+          "completeQueries": 2,
+          "positiveQueries": 2,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 2,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 2,
+          "supportedWindows": 2
+        },
+        "Q09": {
+          "queries": 4,
+          "completeQueries": 4,
+          "positiveQueries": 4,
+          "negativeQueries": 0,
+          "recallAt10": 1,
+          "precisionAt10": 1,
+          "noMatchFalsePositiveRate": null,
+          "conditionViolations": 0,
+          "conditionHits": 4,
+          "conditionViolationRate": 0,
+          "evidenceOverlapPrecision": 1,
+          "windows": 4,
+          "supportedWindows": 4
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "code-01",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-01/a.ts",
+          "rank": 0.98,
+          "sourceHash": "a7511844b72bdf8a507cea4f0d4b8c750a1554845ec8bcf93fe91b9b8aefba9e",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 31,
+              "fragment": false,
+              "matchProbability": 0.98
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-01/b.ts",
+          "rank": 0.03,
+          "sourceHash": "493ddbd074b1da7e78112f810983fbe2b23f8d66e43ae16feb6ff7bb90128e37",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 31,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-01/c.ts",
+          "rank": 0.02,
+          "sourceHash": "18f07ec4a659e9babf8fdcc45ba4d984530b5cc021768463bea0e74377ccc2a7",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 37,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-04",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-04/a.ts",
+          "rank": 0.97,
+          "sourceHash": "4746e08cd20720e5264f7631fd314046c784ef860d73913ae3c1241e22669792",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 4,
+              "startByte": 0,
+              "endByte": 90,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-04/c.ts",
+          "rank": 0.13,
+          "sourceHash": "e3fdf82800b2069a86402b1d63cf81b0ef6b5e05ebd4abc0e552598481a88795",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 4,
+              "startByte": 0,
+              "endByte": 98,
+              "fragment": false,
+              "matchProbability": 0.13
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-04/b.ts",
+          "rank": 0.06,
+          "sourceHash": "02f53319492bae19335f537f2aacc6e0ef70237099be61fa2c391b987c6c7eb0",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 3,
+              "startByte": 0,
+              "endByte": 58,
+              "fragment": false,
+              "matchProbability": 0.06
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-05",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-05/a.ts",
+          "rank": 0.97,
+          "sourceHash": "fe41b0e8ff454c330d8ffda3e03eb71fc7faf7b3838fd7c372d4cd500f146567",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 71,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-05/c.ts",
+          "rank": 0.57,
+          "sourceHash": "c6ec7278c8d6766670c174496130be6efb0fa4f57e01153c8a4cfd10e5029e15",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 74,
+              "fragment": false,
+              "matchProbability": 0.57
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-05/b.ts",
+          "rank": 0.04,
+          "sourceHash": "062a76a482e77a69086898b6d136e16cf0c94f3156b363349501a54b8c8e377e",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 56,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-08",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-08/a.ts",
+          "rank": 0.96,
+          "sourceHash": "16d6e3266f93075ee8277ee28f45d44c796d92df1e5d35f72f99502596370c98",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 67,
+              "fragment": false,
+              "matchProbability": 0.96
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-08/b.ts",
+          "rank": 0.03,
+          "sourceHash": "c4bd7f32e97152df2a6e9ed217056f4bbd26c0dcc47901ca07514f7a36572308",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 62,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-08/c.ts",
+          "rank": 0.02,
+          "sourceHash": "5bcdf85febc35df6e79379ccb0a97e2abd081e32e23dfb7c766caa0ae1018ffd",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 49,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-09",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-09/c.ts",
+          "rank": 0.03,
+          "sourceHash": "541ce2fbf273db154e3bdee1f3783e828a39cb26bba55bd01b49f4568d66f202",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 66,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-09/a.ts",
+          "rank": 0.01,
+          "sourceHash": "40ae90bfb88ef1edc600e37c8db558e9cf95780d4189ca301ebbc03044a7d2d1",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 19,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-09/b.ts",
+          "rank": 0.01,
+          "sourceHash": "894857a83e2a895101ec8a3ee2b9b55a51bdd3926e5b5efb0e0030a3fabd1c95",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 35,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-01",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-01/a.md",
+          "rank": 0.9,
+          "sourceHash": "d84e50d6abf2d5cd29751cf574033d8b5ca1a43863c54efbef1ca433dd26ad71",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 106,
+              "fragment": false,
+              "matchProbability": 0.9
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-01/c.md",
+          "rank": 0.04,
+          "sourceHash": "ecbff7a1570e9f040c8a79ac620449a762be36cec71d99b76909f9156a150b06",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 60,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-01/b.md",
+          "rank": 0.03,
+          "sourceHash": "2d66a84d9f17ff1aee58620a68fc470d990af5e781393dc7206c3338a976f11a",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 72,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-04",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-04/a.md",
+          "rank": 0.97,
+          "sourceHash": "935a25cd6a9c85ebf2360aa3950fa3b473030a6687bf930085a13e4fcfba9ffd",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 107,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-04/c.md",
+          "rank": 0.07,
+          "sourceHash": "f57a9b286fa52011dbdf43d209898b86dc4f6d88e2e1222f178d530337328602",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 79,
+              "fragment": false,
+              "matchProbability": 0.07
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-04/b.md",
+          "rank": 0.02,
+          "sourceHash": "a5194c92f10990c3aaed629135cfc023abcc4a937e786c6984871fe989de0bb5",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 57,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-05",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-05/a.md",
+          "rank": 0.97,
+          "sourceHash": "078c2619847da0c7f8a0661c1bad9de5989808d7a97fa274ffe8de8a471d6510",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 90,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-05/c.md",
+          "rank": 0.05,
+          "sourceHash": "e6234587a616c7ee4745c032a423057633f4c0de1ce779e7e9b9fa75ab353374",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 85,
+              "fragment": false,
+              "matchProbability": 0.05
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-05/b.md",
+          "rank": 0.04,
+          "sourceHash": "3f175e8477ab251e23a4b0d28d59b5781071a3dff4675ff8d13ee6b6742b4ac1",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 85,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-08",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-08/a.md",
+          "rank": 0.95,
+          "sourceHash": "9901cd7788cffa30f273c9c8f69c877716627a4e6e0cb6e1c3e61a0f2d1754f0",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 71,
+              "fragment": false,
+              "matchProbability": 0.95
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-08/c.md",
+          "rank": 0.02,
+          "sourceHash": "915f8ca20593a253ed506c3de3f221b442e8d53068d46ab8b169de0ae79c8d22",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 67,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-08/b.md",
+          "rank": 0.01,
+          "sourceHash": "a2ba715941ca54be61f62d9a22c5a2721aa5738a9606a26f27b12e158f3f0b0f",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 58,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-09",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-09/c.md",
+          "rank": 0.02,
+          "sourceHash": "67da6f0375e618313518c73f82e7f6d864b9c90bc9b78942d64042aac800b188",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 42,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-09/a.md",
+          "rank": 0.01,
+          "sourceHash": "2b08775b5922cae35580e5dac1da033ffc4d374d2cf7e0b14f11fc2f65653b3c",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 57,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-09/b.md",
+          "rank": 0.01,
+          "sourceHash": "036ed5940f27ebfd7a9ce55642f5d6bf843f952f3c0d40104a23e453d456e679",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 68,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-01",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-01/a.log",
+          "rank": 0.96,
+          "sourceHash": "d17214d5ae79a9ccfb6b62ffe0c9abe4c5c31f7e7e46085f56874af1c22dca13",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 76,
+              "fragment": false,
+              "matchProbability": 0.96
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-01/c.log",
+          "rank": 0.6,
+          "sourceHash": "db9e9d56c6d6f69f53043114658cb5c1370790a844407494ed82528d565611c7",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 57,
+              "fragment": false,
+              "matchProbability": 0.6
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-01/b.log",
+          "rank": 0.05,
+          "sourceHash": "64658cc9034111e3a2874494a5cd7ffb8ac3791f58a5a359f564603316d3d9c9",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 69,
+              "fragment": false,
+              "matchProbability": 0.05
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-04",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-04/a.log",
+          "rank": 0.96,
+          "sourceHash": "f223c941927d62b757c1c0ec2af322c44c5d39cd83fdde4b5c1f4bfce9025ff4",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 65,
+              "fragment": false,
+              "matchProbability": 0.96
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-04/b.log",
+          "rank": 0.02,
+          "sourceHash": "0de275613c4d8ba13a715c4c78827b92c97b452160086f94cfdcf6a40c38bcb1",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 59,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-04/c.log",
+          "rank": 0.02,
+          "sourceHash": "92ec3fd5f940d3b3e7000719d02127af39f8c6de4bd60fb3d4991a9c72729ea8",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 65,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-05",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-05/a.log",
+          "rank": 0.94,
+          "sourceHash": "735eaf55b261e58409eb6f79df3edb1a191c0a3a86887b45c36a8cd0d99d4894",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 32,
+              "fragment": false,
+              "matchProbability": 0.94
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-05/c.log",
+          "rank": 0.75,
+          "sourceHash": "7abe7236fbe1636265069022b1bccdc942048d2d9231e0e9daaf97ff64ad165f",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 45,
+              "fragment": false,
+              "matchProbability": 0.75
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-05/b.log",
+          "rank": 0.1,
+          "sourceHash": "6e90575f8aaefd9cba836eada1686510ed5797ccd9310dce42ad2638e75aed70",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 35,
+              "fragment": false,
+              "matchProbability": 0.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-08",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-08/a.log",
+          "rank": 0.89,
+          "sourceHash": "80d4caf4b905a1f5ec8de9134216ab4c2b7c822c048e6b9fbd129166ce16458b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 67,
+              "fragment": false,
+              "matchProbability": 0.89
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-08/b.log",
+          "rank": 0.02,
+          "sourceHash": "b42e210b367f25756ac6f7132316bb68aa8b1fd864527c7fbae7441cfdb4963e",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 50,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-08/c.log",
+          "rank": 0.01,
+          "sourceHash": "83b51b049ca143cca36ba4266ce0309ff16800f077e57088b75a0baf9b896988",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 39,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-09",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-09/a.log",
+          "rank": 0.02,
+          "sourceHash": "a44bf8375c4f792291284392a439d371079ce020c04e2ac61320565e497263a3",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 33,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-09/c.log",
+          "rank": 0.02,
+          "sourceHash": "76463c2a9740bdea888b77d1fc24d94cc2a0cb39f1fe28360f0ac64758ed8e1b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 25,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-09/b.log",
+          "rank": 0.01,
+          "sourceHash": "389ca77a4b6778761ceb783e2b53c7adab022066f34ea197c33b5b400a29ee9b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 35,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-01",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-01/a.txt",
+          "rank": 0.96,
+          "sourceHash": "e683993cd7f2fdcef6f78c4979a513b9a355a57d5cfeebf1d405c5fdb8917b1b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 63,
+              "fragment": false,
+              "matchProbability": 0.96
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-01/b.txt",
+          "rank": 0.17,
+          "sourceHash": "571a44ccfbb451560ace67ab52c507ee713dc6b9587bcf8903321f6bb00c240d",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 59,
+              "fragment": false,
+              "matchProbability": 0.17
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-01/c.txt",
+          "rank": 0.05,
+          "sourceHash": "171b74965e403945d7d8ee98594d33a419f0e6103b5930acfe716af40ebe5f3b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 72,
+              "fragment": false,
+              "matchProbability": 0.05
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-04",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-04/a.txt",
+          "rank": 0.97,
+          "sourceHash": "f4d4f70c844bac07d7e9d198da97168a209d2f1b83ce184884fcb5cd3ead3d86",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 68,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-04/c.txt",
+          "rank": 0.03,
+          "sourceHash": "4cb3815c3c1cbebbc4943035b614a4eb940f27c47b6aa0d9d45c517404bd0e90",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 48,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-04/b.txt",
+          "rank": 0.02,
+          "sourceHash": "05030833c1a316cdbefb9f4410b79a8331447170763307fbb4840e1c64445ee2",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 56,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-05",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-05/a.txt",
+          "rank": 0.98,
+          "sourceHash": "d6f22d6ef38c8214d133664820ec2e3627f4f5810110fe7c085932c95088c50d",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 36,
+              "fragment": false,
+              "matchProbability": 0.98
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-05/b.txt",
+          "rank": 0.07,
+          "sourceHash": "92b9c232041a5c8c1f2b1d8d6e6d75b8b4d253871dd0adbe42544e75ee804172",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 38,
+              "fragment": false,
+              "matchProbability": 0.07
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-05/c.txt",
+          "rank": 0.03,
+          "sourceHash": "dfa3e8d496c80f45a26ddb90d307eaeb0e23a0cde0dd4897bb94c8bca864a704",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 36,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-08",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-08/a.txt",
+          "rank": 0.98,
+          "sourceHash": "3ec1b462d08a3ee201dc06ca2fe6a0f70ba0d8ceb1b320ce01364adfc831fc9e",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 72,
+              "fragment": false,
+              "matchProbability": 0.98
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-08/c.txt",
+          "rank": 0.97,
+          "sourceHash": "449acf588c7500fd9b6fe847a9247831c2594730fb9ab13812dd09b8a9e0df4f",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 74,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-08/b.txt",
+          "rank": 0.02,
+          "sourceHash": "3374872f9b936c7a273211463d442a834810a369b2f5d5e2dd531bb63456bb14",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 67,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-09",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-09/a.txt",
+          "rank": 0.01,
+          "sourceHash": "648c41fa7ddc705070e22195cc4d028c026457274bf2130c85d2189fda91051b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 33,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-09/b.txt",
+          "rank": 0.01,
+          "sourceHash": "63971095e6c68fe3d7936954ebd16d7c159d6dcbff277cac4e0b0f1c30ef4577",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 30,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-09/c.txt",
+          "rank": 0.01,
+          "sourceHash": "022274b13e60d381523b587ccceea55f3961da89ff071d5233e9cfd67b43cec9",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 34,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-02",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-02/a.ts",
+          "rank": 0.98,
+          "sourceHash": "91cbcf5cc2f2701d508a75a77b386492addea8cebeafc5700795bccdac21d1af",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 53,
+              "fragment": false,
+              "matchProbability": 0.98
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-02/b.ts",
+          "rank": 0.1,
+          "sourceHash": "81f964780feffb04d574cf7457c3bb9efcbc8a502445083d47769c98201f2120",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 61,
+              "fragment": false,
+              "matchProbability": 0.1
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-02/c.ts",
+          "rank": 0.02,
+          "sourceHash": "cb364f0b108052816e81a1767f576400386f026439a5a33cd198a0d3ae63972b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 37,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-03",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-03/a.ts",
+          "rank": 0.97,
+          "sourceHash": "fa56c6e3e654148afa7aaf909aaa3cbff11d604109d5591c075aeb79f7777044",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 3,
+              "startByte": 0,
+              "endByte": 48,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-03/c.ts",
+          "rank": 0.08,
+          "sourceHash": "421d24ad3a101b9cc15ad133f3c474e47c5f86e028eda0a9cb45e16abae48e2f",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 3,
+              "startByte": 0,
+              "endByte": 49,
+              "fragment": false,
+              "matchProbability": 0.08
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-03/b.ts",
+          "rank": 0.03,
+          "sourceHash": "c1c3a1b458395a364a373fa6571689565c68c77c34c42211968067c041563d0f",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 48,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-06",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-06/a.ts",
+          "rank": 0.92,
+          "sourceHash": "5009787108dff02e0439b048bcbf2846e5c1175d9c9714277c937a2c50cc52e0",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 34,
+              "fragment": false,
+              "matchProbability": 0.92
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-06/b.ts",
+          "rank": 0.03,
+          "sourceHash": "1f54935e5a4e594e257d2e115b4108b08944b67764cec2f0b31e66ce84172e7b",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 5,
+              "startByte": 0,
+              "endByte": 69,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-06/c.ts",
+          "rank": 0.02,
+          "sourceHash": "b7d08188a28989d777f700a215b988b8c28d95f324d75986003a3f5740d9b215",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 38,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-07",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-07/a.ts",
+          "rank": 0.94,
+          "sourceHash": "181ebb230655794190e01ad60b5cf92bfa6df34d1d12569ab70968b80c715f63",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 4,
+              "startByte": 0,
+              "endByte": 130,
+              "fragment": false,
+              "matchProbability": 0.94
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-07/b.ts",
+          "rank": 0.11,
+          "sourceHash": "b8e0b9683527cde4a46140213c6ec78afd3ceb95d3c5aef6c842a7ac7966fbc1",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 4,
+              "startByte": 0,
+              "endByte": 115,
+              "fragment": false,
+              "matchProbability": 0.11
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-07/c.ts",
+          "rank": 0.03,
+          "sourceHash": "40ddf5a841e3b59330d012486aa6cbb203e9de5a70708d04dc331308e92bc4d7",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 66,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "code-10",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/code-10/c.ts",
+          "rank": 0.03,
+          "sourceHash": "c2f153f5deceaa89d633c4f6deb6f31fb555b11c9c9636a9da3bf8192b1e66a0",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 67,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-10/a.ts",
+          "rank": 0.01,
+          "sourceHash": "c1ed6ee2bf06619410e0367cbe0f779105f9c8e701bb6d12149a8b4ae3cf1222",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 43,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/code-10/b.ts",
+          "rank": 0.01,
+          "sourceHash": "4dc61044b773bca9d34e8f4ec524b75514d8f5224a0cdedbcee975233bcd1642",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 53,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-02",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-02/a.md",
+          "rank": 0.94,
+          "sourceHash": "272a44c4a8d6a537e94e328a35db79fa065ab8423d43a11918db770323074c68",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 144,
+              "fragment": false,
+              "matchProbability": 0.94
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-02/b.md",
+          "rank": 0.05,
+          "sourceHash": "6ef7e0f2ce2490b6d9a327573e6d3afa6120742de180f84a37dc6f645c8830eb",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 90,
+              "fragment": false,
+              "matchProbability": 0.05
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-02/c.md",
+          "rank": 0.02,
+          "sourceHash": "4bffcdb35ee62e164dfe12a96125df6bae2db06d913761cbbb855c13e188c76d",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 76,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-03",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-03/a.md",
+          "rank": 0.95,
+          "sourceHash": "f4f5e0b48a5417b48288ed7ac2e0c2596dd9137e9c8b4ebaa83a9f3b79daa3d4",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 74,
+              "fragment": false,
+              "matchProbability": 0.95
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-03/b.md",
+          "rank": 0.03,
+          "sourceHash": "31333618e3b34b69ff3884e03e27740c2d5c7596ff70aeff4e8360ac702233db",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 69,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-03/c.md",
+          "rank": 0.01,
+          "sourceHash": "fe98db2e6fb60ec79625c0b0de0835bdd3485773b45a3668c4159d333cbdd0ba",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 44,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-06",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-06/c.md",
+          "rank": 0.92,
+          "sourceHash": "0d9fe4b013453b6f82cc63e34f617dec887e7b052a8baa3b6102930619473f5d",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 117,
+              "fragment": false,
+              "matchProbability": 0.92
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-06/a.md",
+          "rank": 0.89,
+          "sourceHash": "3d029a9b139bf0135d0bd5a27e533191e3e03d617c24b1258a71bb28d92f7adc",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 138,
+              "fragment": false,
+              "matchProbability": 0.89
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-06/b.md",
+          "rank": 0.03,
+          "sourceHash": "82da0f6dbe1cd6e0352ad810b2ece54f022995d5497ec2f54954e892dd10a558",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 73,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-07",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-07/a.md",
+          "rank": 0.97,
+          "sourceHash": "a88e464eaf30a91dd9339d45b3c10482d67b0111fd89528dda8bb6b82b34f3b3",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 11,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-07/c.md",
+          "rank": 0.56,
+          "sourceHash": "00f6a288993db6654c5ef76b5fbc363758d7be6d78c8f0c28bf30f973c9083c1",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 25,
+              "fragment": false,
+              "matchProbability": 0.56
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-07/b.md",
+          "rank": 0.08,
+          "sourceHash": "b3c6afaaf12ff135fe8cd125c1d02a76f0d48c9d0aead5a54ee0c8fdbdb9db80",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 10,
+              "fragment": false,
+              "matchProbability": 0.08
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-10",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/docs-10/a.md",
+          "rank": 0.01,
+          "sourceHash": "37acbff039646bb3c88b950d1e69c2b487f7731b7c32ec64ab8090006df5db82",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 51,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-10/b.md",
+          "rank": 0.01,
+          "sourceHash": "d23a9b068d2f129fb483314df56002b92ef11e629a71974f2c83afd408a0dd3a",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 47,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/docs-10/c.md",
+          "rank": 0.01,
+          "sourceHash": "1295833867984b50bfbd90617f8cc6af107252d30156e9680a545859ea792c8d",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 2,
+              "startByte": 0,
+              "endByte": 52,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-02",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-02/a.log",
+          "rank": 0.96,
+          "sourceHash": "6dd2287a58b4fc5e2ade4c98522dfafec184fbcd3dd0f0652b2301228987a3c1",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 46,
+              "fragment": false,
+              "matchProbability": 0.96
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-02/c.log",
+          "rank": 0.04,
+          "sourceHash": "8757df4b420c953b1ccc6c1d31af93f9e4edc548a5f399659af5b04329679f49",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 50,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-02/b.log",
+          "rank": 0.02,
+          "sourceHash": "16f59762238741cd0ed95aff304b3cbe01ab8ae21807b2b8226383ed0519fd5a",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 48,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-03",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-03/a.log",
+          "rank": 0.98,
+          "sourceHash": "76db097d0eda4de7bd9e8c03ef13610afdf9f88949f95fd19e1bc4d2a423f340",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 47,
+              "fragment": false,
+              "matchProbability": 0.98
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-03/b.log",
+          "rank": 0.04,
+          "sourceHash": "7d9da2ba45d8448983edbdfea629658aaabd16471af41d34b0c9d28f57162d58",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 47,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-03/c.log",
+          "rank": 0.04,
+          "sourceHash": "0cdb65569d65a8b738fb5ea3f2a47d054475f1c2a001c59e69e86a0eac324f57",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 46,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-06",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-06/a.log",
+          "rank": 0.97,
+          "sourceHash": "aafad6a0bb7c79aa1b9cbe227d1f632da4c9a60205fa42138e34d395fded2ac2",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 34,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-06/c.log",
+          "rank": 0.71,
+          "sourceHash": "c1aef917e95149faccf63c61ffb070a7f2d6e493e83557fea044eeee36841a70",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 43,
+              "fragment": false,
+              "matchProbability": 0.71
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-06/b.log",
+          "rank": 0.04,
+          "sourceHash": "bec31caf28ca830dd69d02164a2c60b208c5775e8b4ec8b668d1c4404697a168",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 33,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-07",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-07/a.log",
+          "rank": 0.96,
+          "sourceHash": "a7f2df5a658374e1c35caac9dcf67216d0006079cbd577c9728c27581c972633",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 52,
+              "fragment": false,
+              "matchProbability": 0.96
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-07/b.log",
+          "rank": 0.05,
+          "sourceHash": "98a585be430ad1e0a398d33c750ed71b51f594ec8a60a39025ced492a814a001",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 38,
+              "fragment": false,
+              "matchProbability": 0.05
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-07/c.log",
+          "rank": 0.02,
+          "sourceHash": "2d9a72f2886d52ba47c6b104a032eb3c1af4e78a32ea9fcdd435cb577592c71d",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 47,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logs-10",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/logs-10/a.log",
+          "rank": 0.01,
+          "sourceHash": "fad9ada671309ddf09c991f86a55e8963f571bb210b61ecdbee9d716745ca362",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 32,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-10/b.log",
+          "rank": 0.01,
+          "sourceHash": "1cc30c8297b1b9cd00d685f0cf20d178887ba94b6ec6f24cd893b7fac92d68f3",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 48,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/logs-10/c.log",
+          "rank": 0.01,
+          "sourceHash": "51bbe4e5c50015072821674cf5a2ec16ee637093d1c49a311f7fe737d4372961",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 34,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-02",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-02/a.txt",
+          "rank": 0.95,
+          "sourceHash": "e150a1ec81e8e93e1eae2c3a77e66ec6dbd6a3b460f89c1d08aecf422ee401a0",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 7,
+              "fragment": false,
+              "matchProbability": 0.95
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-02/c.txt",
+          "rank": 0.09,
+          "sourceHash": "faa68d49af196820d99441b61d67e767a46ebe6ca32a8b59670ea5ee2cc45469",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 20,
+              "fragment": false,
+              "matchProbability": 0.09
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-02/b.txt",
+          "rank": 0.04,
+          "sourceHash": "f33ae3bc9a22cd7564990a794789954409977013966fb1a8f43c35776b833a95",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 6,
+              "fragment": false,
+              "matchProbability": 0.04
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-03",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-03/a.txt",
+          "rank": 0.95,
+          "sourceHash": "804562483b9b0ca3974a62a7ee2171e58d7860498ef102c8a512a53e05eb6cd9",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 91,
+              "fragment": false,
+              "matchProbability": 0.95
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-03/c.txt",
+          "rank": 0.07,
+          "sourceHash": "d96cb96e9d741a11ccd5732989e8a8fbc06714e5649eff6ab462ffb62a58298e",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 67,
+              "fragment": false,
+              "matchProbability": 0.07
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-03/b.txt",
+          "rank": 0.03,
+          "sourceHash": "5a84e5ad00302b1a68d2287099e83469f0905d0ca56de7755bf4f2adb79ea699",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 71,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-06",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-06/a.txt",
+          "rank": 0.97,
+          "sourceHash": "27c9281564bcd9b781c31bc658bb946285b54d5492520889b658061e80138452",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 65,
+              "fragment": false,
+              "matchProbability": 0.97
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-06/c.txt",
+          "rank": 0.02,
+          "sourceHash": "5adc48d4c64917f3065830540b42a25ca7f284ec1e0df19bc2e07d270106adec",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 66,
+              "fragment": false,
+              "matchProbability": 0.02
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-06/b.txt",
+          "rank": 0.01,
+          "sourceHash": "0b1002384e347ee2ff4080e43ea989f3d8ad547130291812f13fc86cc37aca47",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 66,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-07",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-07/a.txt",
+          "rank": 0.98,
+          "sourceHash": "15a9bc7b323c2dd1914f756f9a7a8b32683f1394df378d75df51d95eaa97716a",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 20,
+              "fragment": false,
+              "matchProbability": 0.98
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-07/c.txt",
+          "rank": 0.05,
+          "sourceHash": "b78b18857fac63893cc73ec8f0a568c4ae10605c851fbe922a961f7a471e3c36",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 20,
+              "fragment": false,
+              "matchProbability": 0.05
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-07/b.txt",
+          "rank": 0.03,
+          "sourceHash": "5a55b1988621b0a9fec67d446e6b2fc9e7a072694a06bf2b0275d19d853d74b2",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 18,
+              "fragment": false,
+              "matchProbability": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-10",
+      "complete": true,
+      "files": [
+        {
+          "path": "eval/corpus/text-10/a.txt",
+          "rank": 0.01,
+          "sourceHash": "3bb2394fb1ae7f1a7b05aa65d76d0dd4f1a7b741219e63ede51ede7aa27fc664",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 50,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-10/b.txt",
+          "rank": 0.01,
+          "sourceHash": "390a85a6b0c818983a1310d337f6f4284f92b7268d7bfced0e9e961e7f4467d8",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 37,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        },
+        {
+          "path": "eval/corpus/text-10/c.txt",
+          "rank": 0.01,
+          "sourceHash": "e313e0805298abd6417e2e320f1aba3fc0fb3059656cc8737bd8722ec623252e",
+          "matches": [
+            {
+              "startLine": 1,
+              "endLine": 1,
+              "startByte": 0,
+              "endByte": 40,
+              "fragment": false,
+              "matchProbability": 0.01
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "initialDevelopment": {
+    "queries": 20,
+    "completeQueries": 20,
+    "positiveQueries": 16,
+    "negativeQueries": 4,
+    "recallAt10": 1,
+    "precisionAt10": 0.96875,
+    "noMatchFalsePositiveRate": 0,
+    "conditionViolations": 1,
+    "conditionHits": 12,
+    "conditionViolationRate": 0.08333333333333333,
+    "evidenceOverlapPrecision": 0.9444444444444444,
+    "windows": 18,
+    "supportedWindows": 17
+  },
+  "supplemental": {
+    "generatedAt": "2026-09-19T16:43:55.608Z",
+    "promptVersion": "conditions-v1",
+    "budget": {
+      "version": 1,
+      "attempts": 132,
+      "successful": 132,
+      "reservedUSD": 1.32,
+      "observedUSD": 0.003244962000000003,
+      "inputTokens": 77261,
+      "outputTokens": 2942,
+      "model": "jev-1.13.0"
+    },
+    "threshold": 0.8,
+    "rows": [
+      {
+        "name": "40-lines-batched",
+        "purpose": "40 lines / overlap 8 / up to 8 windows per request",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.97,
+        "elapsedMs": 1000,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 40
+              },
+              {
+                "startLine": 33,
+                "endLine": 72
+              },
+              {
+                "startLine": 65,
+                "endLine": 96
+              }
+            ],
+            "requestBytes": 6090,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.02,
+                0.03,
+                0.97
+              ],
+              "usage": {
+                "inputTokens": 1880,
+                "outputTokens": 55
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "40-lines-single",
+        "purpose": "Same production windows, one question per request",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.96,
+        "elapsedMs": 1511,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 40
+              }
+            ],
+            "requestBytes": 2251,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.01
+              ],
+              "usage": {
+                "inputTokens": 859,
+                "outputTokens": 21
+              }
+            }
+          },
+          {
+            "windows": [
+              {
+                "startLine": 33,
+                "endLine": 72
+              }
+            ],
+            "requestBytes": 2254,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.01
+              ],
+              "usage": {
+                "inputTokens": 862,
+                "outputTokens": 21
+              }
+            }
+          },
+          {
+            "windows": [
+              {
+                "startLine": 65,
+                "endLine": 96
+              }
+            ],
+            "requestBytes": 2065,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.96
+              ],
+              "usage": {
+                "inputTokens": 807,
+                "outputTokens": 21
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "20-lines-batched",
+        "purpose": "20 lines / no overlap / one request; exploratory, not a controlled overlap comparison",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.97,
+        "elapsedMs": 451,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 20
+              },
+              {
+                "startLine": 21,
+                "endLine": 40
+              },
+              {
+                "startLine": 41,
+                "endLine": 60
+              },
+              {
+                "startLine": 61,
+                "endLine": 80
+              },
+              {
+                "startLine": 81,
+                "endLine": 96
+              }
+            ],
+            "requestBytes": 7335,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.02,
+                0.03,
+                0.03,
+                0.97,
+                0.03
+              ],
+              "usage": {
+                "inputTokens": 2189,
+                "outputTokens": 89
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "context-a.ts",
+        "purpose": "No login check in the complete long function",
+        "expectedMatch": true,
+        "matched": false,
+        "rank": 0.76,
+        "elapsedMs": 614,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 40
+              },
+              {
+                "startLine": 33,
+                "endLine": 72
+              },
+              {
+                "startLine": 65,
+                "endLine": 84
+              }
+            ],
+            "requestBytes": 3932,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.14,
+                0.07,
+                0.76
+              ],
+              "usage": {
+                "inputTokens": 1471,
+                "outputTokens": 55
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "context-b.ts",
+        "purpose": "Login check before the read, outside the final window",
+        "expectedMatch": false,
+        "matched": false,
+        "rank": 0.23,
+        "elapsedMs": 455,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 40
+              },
+              {
+                "startLine": 33,
+                "endLine": 72
+              },
+              {
+                "startLine": 65,
+                "endLine": 84
+              }
+            ],
+            "requestBytes": 3965,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.06,
+                0.07,
+                0.23
+              ],
+              "usage": {
+                "inputTokens": 1477,
+                "outputTokens": 55
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "latency-1",
+        "purpose": "Identical one-window input; cache bypassed to measure API latency",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.97,
+        "elapsedMs": 373,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 1
+              }
+            ],
+            "requestBytes": 1115,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.97
+              ],
+              "usage": {
+                "inputTokens": 536,
+                "outputTokens": 21
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "latency-2",
+        "purpose": "Identical one-window input; cache bypassed to measure API latency",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.97,
+        "elapsedMs": 342,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 1
+              }
+            ],
+            "requestBytes": 1115,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.97
+              ],
+              "usage": {
+                "inputTokens": 536,
+                "outputTokens": 21
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "latency-3",
+        "purpose": "Identical one-window input; cache bypassed to measure API latency",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.97,
+        "elapsedMs": 299,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 1
+              }
+            ],
+            "requestBytes": 1115,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.97
+              ],
+              "usage": {
+                "inputTokens": 536,
+                "outputTokens": 21
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "latency-4",
+        "purpose": "Identical one-window input; cache bypassed to measure API latency",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.97,
+        "elapsedMs": 305,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 1
+              }
+            ],
+            "requestBytes": 1115,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.97
+              ],
+              "usage": {
+                "inputTokens": 536,
+                "outputTokens": 21
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "latency-5",
+        "purpose": "Identical one-window input; cache bypassed to measure API latency",
+        "expectedMatch": true,
+        "matched": true,
+        "rank": 0.97,
+        "elapsedMs": 294,
+        "responses": [
+          {
+            "windows": [
+              {
+                "startLine": 1,
+                "endLine": 1
+              }
+            ],
+            "requestBytes": 1115,
+            "result": {
+              "model": "jev-1.13.0",
+              "probabilities": [
+                0.97
+              ],
+              "usage": {
+                "inputTokens": 536,
+                "outputTokens": 21
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
