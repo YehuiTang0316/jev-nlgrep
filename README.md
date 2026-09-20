@@ -12,12 +12,12 @@ Search code, docs, logs, and text by meaning, even when you forget the exact wor
 
 | Feature | grep | Semgrep CE | nlgrep |
 | --- | :---: | :---: | :---: |
-| Natural-language queries | ☐ | ☐ | ☑ |
-| Find paraphrases by meaning | ☐ | ☐ | ☑ |
-| Describe code behavior without rules | ☐ | ☐ | ☑ |
-| Deterministic pattern matching | ☑ | ☑ | ☐ |
-| AST and data-flow rules | ☐ | ☑ | ☐ |
-| Search new content fully offline | ☑ | ☑ | ☐ |
+| Natural-language queries | ☐ | ☐ | ✅ |
+| Find paraphrases by meaning | ☐ | ☐ | ✅ |
+| Describe code behavior without rules | ☐ | ☐ | ✅ |
+| Deterministic pattern matching | ✅ | ✅ | ☐ |
+| AST and data-flow rules | ☐ | ✅ | ☐ |
+| Search new content fully offline | ✅ | ✅ | ☐ |
 
 [Demo notes and evidence](https://github.com/YehuiTang0316/jev-nlgrep/blob/main/comparison-videos/README.md#content-and-evidence)
 
