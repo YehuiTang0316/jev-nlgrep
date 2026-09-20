@@ -49,6 +49,8 @@ test('real CLI help/version/dry-run and invalid args work without network or key
   assert.equal(version.stdout.trim(), JSON.parse(await readFile('package.json', 'utf8')).version);
   const plan = run(['query', '.', '--dry-run', '--json']);
   assert.equal(plan.status, 0); assert.equal(JSON.parse(plan.stdout).files[0].path, 'a');
+  assert.equal(JSON.parse(plan.stdout).schemaVersion, 2);
+  assert.deepEqual(JSON.parse(plan.stdout).files[0].contextFiles, []);
   assert.equal(run(['query', '--top', '-1']).status, 2);
   assert.equal(run(['query', '.', '--max-requests', '0']).status, 2);
   const stdin = run(['query', '-', '--dry-run', '--json'], 'text');

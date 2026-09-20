@@ -24,7 +24,7 @@ export function metrics(rows: CaseResult[], threshold: number) {
       recall += relevant.length / row.case.expected.length;
       precision += found.length ? relevant.length / found.length : 0;
     } else if (found.length) falseAlarms++;
-    if (['Q01', 'Q02', 'Q04', 'Q05', 'Q06', 'Q08', 'Q09'].includes(row.case.scenario)) {
+    if (['Q01', 'Q02', 'Q04', 'Q05', 'Q06', 'Q07', 'Q08', 'Q09'].includes(row.case.scenario)) {
       conditionHits += found.length;
       conditionViolations += found.length - relevant.length;
     }

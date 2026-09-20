@@ -39,7 +39,7 @@ export function createJevEvaluator(apiKey: string, fetch?: Fetch): Evaluator {
   return { async evaluate(request, signal) {
     try {
       const result = await client.systemOne({ model: request.model,
-        state: { query: request.state.query, file: { ...request.state.file }, windows: request.state.windows.map(w => ({ ...w })) },
+        state: { query: request.state.query, files: request.state.files.map(f => ({ ...f })), windows: request.state.windows.map(w => ({ ...w })) },
         questions: request.questions }, { signal });
       return parseEvaluation(result, request);
     } catch (error) {

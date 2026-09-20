@@ -37,7 +37,8 @@ export interface Window {
   fragment: boolean;
   text: string;
 }
-export interface Match extends Window { matchProbability: number }
+export interface ContextWindow extends Window { path: string; sourceHash: string; wholeFile: boolean }
+export interface Match extends Window { matchProbability: number; context: ContextWindow[] }
 export interface FileResult { path: string; sourceHash: string; rank: number; matches: Match[] }
 export interface NoulQuestion {
   type: 'noul';
@@ -48,13 +49,14 @@ export interface EvaluationRequest {
   model: string;
   state: {
     query: string;
-    file: { path: string; lineCount: number };
-    windows: Array<Window & { wholeFile: boolean }>;
+    files: Array<{ path: string; lineCount: number; sourceHash: string }>;
+    windows: ContextWindow[];
   };
   questions: Record<string, NoulQuestion>;
 }
 export interface Evaluation { model: string; probabilities: number[]; usage: { inputTokens: number; outputTokens: number } }
-export interface Batch { source: Source; windows: Window[]; request: EvaluationRequest; requestBytes: number; cached?: Evaluation }
+export interface BatchItem { source: Source; window: Window }
+export interface Batch { items: BatchItem[]; request: EvaluationRequest; requestBytes: number; cached?: Evaluation }
 export interface Plan {
   sources: Source[];
   batches: Batch[];
@@ -83,13 +85,13 @@ export interface SearchStats {
   elapsedMs: number;
 }
 export interface SearchOutput {
-  schemaVersion: 1;
+  schemaVersion: 2;
   query: string;
   modelRequested: string;
   modelsUsed: string[];
   promptVersion: string;
   threshold: number;
-  evidenceScope: 'window';
+  evidenceScope: 'provided-context';
   complete: boolean;
   outputLimited: boolean;
   files: FileResult[];
@@ -98,13 +100,13 @@ export interface SearchOutput {
   warnings: Issue[];
 }
 export interface PlanOutput {
-  schemaVersion: 1;
+  schemaVersion: 2;
   kind: 'plan';
   query: string;
   model: string;
   promptVersion: string;
   complete: boolean;
-  files: Array<{ path: string; bytes: number; windows: number }>;
+  files: Array<{ path: string; bytes: number; windows: number; contextFiles: string[] }>;
   exclusions: Plan['exclusions'];
   sourceBytes: number;
   plannedWindows: number;

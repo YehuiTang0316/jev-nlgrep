@@ -1,0 +1,147 @@
+[
+  {
+    "id": "complete-function-en",
+    "category": "code",
+    "language": "en",
+    "split": "context",
+    "scenario": "Q07",
+    "query": "A handler function that reads a user profile without checking whether the caller is logged in",
+    "paths": [
+      "eval/corpus/supplemental/a.ts",
+      "eval/corpus/supplemental/b.ts"
+    ],
+    "expected": [
+      "eval/corpus/supplemental/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/supplemental/a.ts": [
+        1,
+        84
+      ]
+    }
+  },
+  {
+    "id": "complete-function-zh",
+    "category": "code",
+    "language": "zh",
+    "split": "context",
+    "scenario": "Q07",
+    "query": "读取用户资料之前没有检查调用者登录状态的处理函数",
+    "paths": [
+      "eval/corpus/supplemental/a.ts",
+      "eval/corpus/supplemental/b.ts"
+    ],
+    "expected": [
+      "eval/corpus/supplemental/a.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/supplemental/a.ts": [
+        1,
+        84
+      ]
+    }
+  },
+  {
+    "id": "shell-en",
+    "category": "code",
+    "language": "en",
+    "split": "context",
+    "scenario": "Q08",
+    "query": "HTTP request handlers that pass a request parameter to a shell command, including through a helper function",
+    "paths": [
+      "eval/corpus/context/shell/handler-bad.ts",
+      "eval/corpus/context/shell/handler-good.ts",
+      "eval/corpus/context/shell/shell.ts"
+    ],
+    "expected": [
+      "eval/corpus/context/shell/handler-bad.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/context/shell/handler-bad.ts": [
+        1,
+        5
+      ]
+    }
+  },
+  {
+    "id": "shell-zh",
+    "category": "code",
+    "language": "zh",
+    "split": "context",
+    "scenario": "Q08",
+    "query": "将 HTTP 请求参数传给 shell 命令的请求处理函数，包括经由辅助函数的调用",
+    "paths": [
+      "eval/corpus/context/shell/handler-bad.ts",
+      "eval/corpus/context/shell/handler-good.ts",
+      "eval/corpus/context/shell/shell.ts"
+    ],
+    "expected": [
+      "eval/corpus/context/shell/handler-bad.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/context/shell/handler-bad.ts": [
+        1,
+        5
+      ]
+    }
+  },
+  {
+    "id": "auth-en",
+    "category": "code",
+    "language": "en",
+    "split": "context",
+    "scenario": "Q07",
+    "query": "HTTP handler functions that read a user profile without first checking whether the caller is logged in, including checks in called helpers",
+    "paths": [
+      "eval/corpus/context/auth/guard.ts",
+      "eval/corpus/context/auth/handler-bad.ts",
+      "eval/corpus/context/auth/handler-good.ts"
+    ],
+    "expected": [
+      "eval/corpus/context/auth/handler-bad.ts"
+    ],
+    "expectedLines": {
+      "eval/corpus/context/auth/handler-bad.ts": [
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "id": "python-en",
+    "category": "code",
+    "language": "en",
+    "split": "context",
+    "scenario": "Q08",
+    "query": "HTTP request handlers that pass a request parameter to a shell command, including through a helper function",
+    "paths": [
+      "eval/corpus/context/python/handler_bad.py",
+      "eval/corpus/context/python/handler_good.py",
+      "eval/corpus/context/python/shell.py"
+    ],
+    "expected": [
+      "eval/corpus/context/python/handler_bad.py"
+    ],
+    "expectedLines": {
+      "eval/corpus/context/python/handler_bad.py": [
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "id": "no-shell",
+    "category": "code",
+    "language": "en",
+    "split": "context",
+    "scenario": "Q08",
+    "query": "HTTP request handlers that pass a request parameter to a shell command",
+    "paths": [
+      "eval/corpus/context/auth/guard.ts",
+      "eval/corpus/context/auth/handler-bad.ts",
+      "eval/corpus/context/auth/handler-good.ts"
+    ],
+    "expected": [],
+    "expectedLines": {}
+  }
+]

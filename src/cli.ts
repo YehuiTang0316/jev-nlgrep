@@ -22,7 +22,7 @@ export function byteSize(value: string): number {
   return integer(String(Number(match[1]) * factor), 1);
 }
 export function parseOptions(argv: string[], cwd: string, stdinTTY: boolean, io: { out: (s: string) => void; err: (s: string) => void }): SearchOptions {
-  const command = new Command('nlgrep').description('Find files that satisfy natural-language conditions using Jev.\nQueries and selected source text are sent to TypeSafe. Evidence scope: window.')
+  const command = new Command('nlgrep').description('Find files that satisfy natural-language conditions using Jev.\nQueries and selected source text are sent to TypeSafe. Evidence scope: supplied file/window batch.')
     .version(VERSION).argument('<query>', 'natural-language search condition').argument('[paths...]', 'files, directories, or - for stdin')
     .option('-g, --glob <pattern>', 'include glob or !exclude glob (repeatable)', (value: string, prev: string[]) => [...prev, value], [])
     .option('--hidden', 'include hidden entries', false).option('--no-ignore', 'disable ignore files and built-in generated-directory exclusions')
